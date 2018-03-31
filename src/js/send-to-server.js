@@ -1,9 +1,10 @@
+import sendDispatcher from './send-dispatcher';
+
 function sendToServer(data) {
-  console.log(data);
-
-  const event = new CustomEvent('dataIsSent', { detail: data });
-
-  document.dispatchEvent(event);
+  sendDispatcher.dispatch({
+    type: 'change-string',
+    string: data
+  });
 }
 
 export default sendToServer;
