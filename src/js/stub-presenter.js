@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import Presenter from './mvp/presenter';
-import StubModel from './stub-model';
-import stubView from './stub-view';
+import StubModel from './data/stub-model';
+import Logger from './utils/logger';
+
 
 class StubPresenter extends Presenter {
   constructor(model = StubModel) {
@@ -10,11 +11,8 @@ class StubPresenter extends Presenter {
 
   updateLabel(label) {
     this._model.label = label;
-    const obj = {
-      label: this._model.label
-    };
-
-    stubView(obj).renderView();
+    Logger.log('Изменил поле label в модели');
+    this._renderView();
   }
 }
 
