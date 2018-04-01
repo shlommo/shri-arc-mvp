@@ -2,6 +2,10 @@
 import Logger from '../utils/logger';
 
 class Presenter {
+  /**
+   * Создает презентер
+   * @param {Model} model - модель данных с которой работает презентер.
+   */
   constructor(model) {
     this._model = model;
     this._view = null;
@@ -15,6 +19,11 @@ class Presenter {
     this._renderView();
   }
 
+  /**
+   * Привязать представление к презентеру
+   * @param {Function} view - функция которая возвращает экземпляр конструктора представления
+   * с заданными параметрами
+   */
   _bindView(view) {
     this._view = view;
     Logger.log('Привязал представление к презентеру');
