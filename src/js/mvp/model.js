@@ -5,6 +5,10 @@ class Model {
     this._defaultState = state;
   }
 
+  getState() {
+    return this._state;
+  }
+
   resetState() {
     this._state = this._defaultState;
   }
