@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle, class-methods-use-this */
-import View from './mvp/view';
-import StubPresenter from './stub-presenter';
+import View from './../mvp/view';
+import StubPresenter from './../stub-presenter';
 
 class StubView extends View {
   constructor(inputData) {
@@ -29,10 +29,9 @@ class StubView extends View {
     if (inputValue.length === 0) {
       return;
     }
-    const label = `Сервер принял данные: ${inputValue}`;
 
     this.clearHandlers();
-    StubPresenter.updateLabel(label);
+    StubPresenter.updateLabel(inputValue);
   }
 
   bindHandlers() {
