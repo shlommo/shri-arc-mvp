@@ -8,15 +8,22 @@ class Presenter {
    */
   constructor(model) {
     this._model = model;
+    this._isInited = false;
+    this._viewIsBinded = false;
     this._view = null;
     this._qState = null;
     this._updatedView = null;
   }
 
   init(view) {
-    Logger.log('Прошла инициализация');
-    this._bindView(view);
-    this._renderView();
+    if (!this._isInited) {
+      Logger.log('Прошла инициализация');
+      this._bindView(view);
+      this._renderView();
+      this._isInited = true;
+    } else {
+      throw new RangeError('Нельзя инициировать презентер больше одного раза');
+    }
   }
 
   /**
@@ -25,8 +32,11 @@ class Presenter {
    * с заданными параметрами
    */
   _bindView(view) {
-    this._view = view;
-    Logger.log('Привязал представление к презентеру');
+    if (!this._viewIsBinded) {
+      this._view = view;
+      Logger.log('Привязал представление к презентеру');
+      this._viewIsBinded = true;
+    }
   }
 
   _getQState() {
