@@ -1,5 +1,8 @@
 // import logger from './utils/logger';
-import stubView from './stub-view';
-import stub from './data/app-data';
+import stubView from './views/stub-view';
+// import stubData from './data/app-data';
+import StubPresenter from './stub-presenter';
 
-stubView(stub).renderView();
+StubPresenter.init(stubView);
+
+// stubView(stubData).renderView();
